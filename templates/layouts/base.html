@@ -23,9 +23,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item active">
+                {% if user.is_authenticated %}
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'client:logout' %}">{% translate " Chiqish" %}</a>
+                    </li>
+                {% else %}
+                <li class="nav-item ">
+                    <a class="nav-link" href="{% url 'client:login' %}">{% translate "Tizimga kirish" %}</a>
+                </li>
+                <li class="nav-item ">
                     <a class="nav-link btn btn-primary rounded-pill text-white" href="{% url 'client:registration' %}">{% translate "Ro'yxatdan o'tish" %}</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
