@@ -1,6 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from uy.helpers import UploadTo
+from django.templatetags.static import static
 
 class User(AbstractUser):
-    photo = models.ImageField()
+    photo = models.ImageField(upload_to=UploadTo("profile"))
+
+    @property
+    def avatar(self):
+        if self.photo:
+            return self.photo.url
+
+        return static("img/no_avatar.jpg")
