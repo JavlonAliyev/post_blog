@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'client',
     'main',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -144,6 +145,8 @@ AUTH_USER_MODEL = 'client.User'
 
 from django.contrib import messages
 
-MESAGES_TAGS = {
+MESSAGE_TAGS = {
     messages.SUCCESS: "alert alert-success"
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

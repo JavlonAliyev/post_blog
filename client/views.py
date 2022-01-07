@@ -19,7 +19,7 @@ class ClientRegistration(View):
             user.set_password(form.cleaned_data['password'])
             user.save()
 
-            messages.success(request. _("Siz muvafiaqatli ro'yxatdan o'tdingiz."))
+            messages.success(request, _("Siz muvafiaqatli ro'yxatdan o'tdingiz."))
             return redirect('main:index')
 
         return render(request, 'layouts/form.html', {
