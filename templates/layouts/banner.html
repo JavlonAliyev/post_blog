@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html' %}
+{% load static i18n bootstrap_pagination%}
+{% block content %}
+    <div class="row">
+    <div class="col-lg-3">
+       <h4 class="my-3 text-black-50">KATEGORIYALAR</h4>
+        {% for m in categories %}
+         <a class="d-flex align-items-center text-black-50" href="{% url 'main:cat' m.id %}">
+             <div class="cat-img cover mx-1" style="background-image: url('{{ m.image.url }}')"></div>
+             {{ m.name }}
+         </a>
+        {% endfor %}
+    </div>
+    <div class="col-lg-9">
+        <img src="{% static 'img/banner.gif' %}" alt="Banner" class="img-fluid" />
+        <div class="row">
+            <div class="col-lg-8">
+                {% block banner_content %}{% endblock %}
+
+            </div>
+            <div class="col-lg-4">
+                <img src="{% static 'img/small-banner.png' %}" alt="Banner" class="img-fluid my-3" />
+                <img src="{% static 'img/small-banner.png' %}" alt="Banner" class="img-fluid my-3" />
+                <img src="{% static 'img/small-banner.png' %}" alt="Banner" class="img-fluid my-3" />
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

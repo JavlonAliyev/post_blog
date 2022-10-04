@@ -2,9 +2,13 @@ from django import forms
 from .models import User
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
+
+
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=50, label=_("Login"), required=True)
     password = forms.CharField(max_length=50, widget=forms.PasswordInput, label=_("Parol"), required=True)
+
+
 class RegistrationForm(forms.ModelForm):
     confirm = forms.CharField(max_length=50, widget=forms.PasswordInput, label=_("Parol takroran"))
 
@@ -25,3 +29,5 @@ class RegistrationForm(forms.ModelForm):
         widgets = {
             'password': forms.PasswordInput
         }
+
+

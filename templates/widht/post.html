@@ -1,0 +1,40 @@
+<div class="border-bottom my-3">
+    <div class="d-flex align-items-center">
+        <span class="d-inline-block cat-img cover mx-1"
+              style="background-image: url('{{ java.category.image.url }}')"></span>
+        <a class="d-flex align-items-center text-black-50"
+           href="{% url 'main:cat' java.category_id %}">{{ java.category.name }}</a>
+        <span class="d-inline-block cat-img cover mx-1 ms-5"
+              style="background-image: url('{{ java.user.avatar }}')"></span>
+        {{ java.user.username }}
+    </div>
+    {% if java.is_audio %}
+        <audio controls>
+            <source src="{{ java.file.url }}"/>
+        </audio>
+    {% elif java.is_video %}
+        <video controls width="100%" height="400px">
+            <source src="{{ java.file.url }}"/>
+        </video>
+    {% elif java.is_image %}
+        <img src="{{ java.file.url }}" class="img-fluid">
+    {% else %}
+        <h2>unsupported format</h2>
+    {% endif %}
+    <div class="p-3">
+        {{ java.comment }}
+    </div>
+    <div class="d-flex">
+        <a href="{% url 'main:like' 'like' java.id %}?return{{ request.get_full_path }}"
+           class="border px-3 py-2 text-black-50">
+            <i class="bi-hand-thumbs-up"></i>{{ java.like }}
+        </a>
+        <a href="{% url 'main:like' 'dislike' java.id %}?return{{ request.get_full_path }}"
+           class="border px-3 py-2 text-black-50 ms-2">
+            <i class="bi-hand-thumbs-down"></i>{{ java.dislike }}
+        </a>
+        <a href="{% url 'main:comments' post.id %}" class="border px-3 py-2 text-black-50 ms-2">
+            <i class="bi-chat-left-fill"></i>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{% extends 'layouts/banner.html' %}
+{% load static crispy_forms_filters  bootstrap_pagination%}
+
+{% block banner_content %}
+    {% include 'widht/post.html' with java=post %}
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <button type="submit" class="btn btn-success">Izoh qoldirish</button>
+    </form>
+
+    {% for java in object_list %}
+        <div class="d-flex">
+        <div class="user_avatar cover" style="background-image: url('{{ java.user.avatar }}')"></div>
+        <div>
+            <div class="float-right">{{ java.added_at }}</div>
+            <strong>{{ java.user.username }}</strong>
+        </div>
+        </div>
+    {% endfor %}
+
+
+    {% bootstrap_paginate page_obj %}
+{% endblock %}

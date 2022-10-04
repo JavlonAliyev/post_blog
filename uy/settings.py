@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'client',
     'main',
-    'crispy_forms'
+    'crispy_forms',
+    'bootstrap_pagination'
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.context_proceessors.categories'
             ],
         },
     },
@@ -121,8 +123,8 @@ USE_I18N = True
 USE_TZ = False
 
 LANGUAGES = (
-    ('uz', "O'zbek"),
-    ('en', "Engilish")
+    ('uz', "🇺🇿  O'zbek"),
+    ('ru', "🇷🇺  Русский")
 )
 
 # Static files (CSS, JavaScript, Images)
@@ -150,3 +152,7 @@ MESSAGE_TAGS = {
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale'
+]
